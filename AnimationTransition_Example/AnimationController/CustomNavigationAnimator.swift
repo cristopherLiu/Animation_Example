@@ -26,7 +26,10 @@ class CustomNavigationAnimator: NSObject, UIViewControllerAnimatedTransitioning 
       let toVC = transitionContext.viewController(forKey: .to),
       let fromView = transitionContext.view(forKey: .from),
       let toView = transitionContext.view(forKey: .to)
-    else {return}
+    else {
+      transitionContext.completeTransition(false)
+      return
+    }
     
     let direction: CGFloat = reverse ? -1 : 1
     let const: CGFloat = -0.005

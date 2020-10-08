@@ -18,7 +18,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
     if let windowScene = scene as? UIWindowScene {
       
-      let viewController = Page1VC()
+      let viewController = MainVC()
       let navViewController = NavController(rootViewController: viewController)
       
       self.window = UIWindow(windowScene: windowScene)

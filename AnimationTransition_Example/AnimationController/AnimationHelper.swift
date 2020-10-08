@@ -15,6 +15,13 @@ struct AnimationHelper {
   static func perspectiveTransform(for containerView: UIView) {
     var transform = CATransform3DIdentity
     transform.m34 = -0.002
+//    containerView.layer.sublayerTransform = transform
+    containerView.layer.transform = transform
+  }
+  
+  static func perspectiveTransform(sub containerView: UIView) {
+    var transform = CATransform3DIdentity
+    transform.m34 = -0.002
     containerView.layer.sublayerTransform = transform
   }
 }

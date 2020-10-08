@@ -22,6 +22,7 @@ class CustomDismissAnimator2: NSObject, UIViewControllerAnimatedTransitioning {
           let toVC = transitionContext.viewController(forKey: .to),
           let snapshot = fromVC.view.snapshotView(afterScreenUpdates: false)
     else {
+      transitionContext.completeTransition(false)
       return
     }
     
