@@ -29,62 +29,67 @@ class PushVC: UIViewController {
   }()
   
   lazy var diceView: UIView = {
-    let diceView = UIView()
+    let diceBgView = UIView()
     
-    let viewFrame = UIScreen.main.bounds
-    diceView.frame = CGRect(x: 50, y: 0, width: viewFrame.width - 50, height: viewFrame.height)
+//    diceView.frame = CGRect(x: 50, y: 0, width: screenFrame.width - 50, height: screenFrame.height)
+//    let diceFrame = CGRect(x: (screenFrame.maxX - 50) / 2 - 50, y: screenFrame.maxY / 2 - 50, width: 100, height: 100)
+    
+    diceBgView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+    diceBgView.center = self.view.center
+    let diceFrame = CGRect(x: 0, y: 0, width: 100, height: 100)
     
     //1
     let dice1 = UIImageView.init(image: UIImage(named: "dice1"))
-    dice1.frame = CGRect(x: (viewFrame.maxX - 50) / 2 - 50, y: viewFrame.maxY / 2 - 50, width: 100, height: 100)
+    dice1.frame = diceFrame
     var transform1 = CATransform3DTranslate(CATransform3DIdentity, 0, 0, 50)
     dice1.layer.transform = transform1
     
     //2
     let dice2 = UIImageView.init(image: UIImage(named: "dice2"))
-    dice2.frame = CGRect(x: (viewFrame.maxX - 50) / 2 - 50, y: viewFrame.maxY / 2 - 50, width: 100, height: 100)
+    dice2.frame = diceFrame
     var transform2 = CATransform3DRotate(CATransform3DIdentity, (CGFloat.pi / 2), 0, 1, 0)
     transform2 = CATransform3DTranslate(transform2, 0, 0, 50)
     dice2.layer.transform = transform2
     
     //3
     let dice3 = UIImageView.init(image: UIImage(named: "dice3"))
-    dice3.frame = CGRect(x: (viewFrame.maxX - 50) / 2 - 50, y: viewFrame.maxY / 2 - 50, width: 100, height: 100)
+    dice3.frame = diceFrame
     var transform3 = CATransform3DRotate(CATransform3DIdentity, (-CGFloat.pi / 2), 1, 0, 0)
     transform3 = CATransform3DTranslate(transform3, 0, 0, 50)
     dice3.layer.transform = transform3
     
     //4
     let dice4 = UIImageView.init(image: UIImage(named: "dice4"))
-    dice4.frame = CGRect(x: (viewFrame.maxX - 50) / 2 - 50, y: viewFrame.maxY / 2 - 50, width: 100, height: 100)
+    dice4.frame = diceFrame
     var transform4 = CATransform3DRotate(CATransform3DIdentity, (CGFloat.pi / 2), 1, 0, 0)
     transform4 = CATransform3DTranslate(transform4, 0, 0, 50)
     dice4.layer.transform = transform4
     
     //5
     let dice5 = UIImageView.init(image: UIImage(named: "dice5"))
-    dice5.frame = CGRect(x: (viewFrame.maxX - 50) / 2 - 50, y: viewFrame.maxY / 2 - 50, width: 100, height: 100)
+    dice5.frame = diceFrame
     var transform5 = CATransform3DRotate(CATransform3DIdentity, (-CGFloat.pi / 2), 0, 1, 0)
     transform5 = CATransform3DTranslate(transform5, 0, 0, 50)
     dice5.layer.transform = transform5
     
     //6
     let dice6 = UIImageView.init(image: UIImage(named: "dice6"))
-    dice6.frame = CGRect(x: (viewFrame.maxX - 50) / 2 - 50, y: viewFrame.maxY / 2 - 50, width: 100, height: 100)
+    dice6.frame = diceFrame
     var transform6 = CATransform3DTranslate(CATransform3DIdentity, 0, 0, -50)
     dice6.layer.transform = transform6
     
-    diceView.addSubview(dice1)
-    diceView.addSubview(dice2)
-    diceView.addSubview(dice3)
-    diceView.addSubview(dice4)
-    diceView.addSubview(dice5)
-    diceView.addSubview(dice6)
+    diceBgView.addSubview(dice1)
+    diceBgView.addSubview(dice2)
+    diceBgView.addSubview(dice3)
+    diceBgView.addSubview(dice4)
+    diceBgView.addSubview(dice5)
+    diceBgView.addSubview(dice6)
     
-    return diceView
+    return diceBgView
   }()
   
-  var angle = CGPoint.init(x: 0, y: 0)
+  let screenFrame = UIScreen.main.bounds
+  var angle = CGPoint.zero
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -92,7 +97,7 @@ class PushVC: UIViewController {
   }
   
   func setupView() {
-    self.view.backgroundColor = UIColor.white
+    self.view.backgroundColor = UIColor.gy
     self.navigationItem.leftBarButtonItem = backButton
     
     self.view.addSubview(diceView)

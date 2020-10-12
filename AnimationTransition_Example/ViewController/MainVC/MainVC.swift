@@ -24,7 +24,7 @@ class MainVC: UIViewController {
   
   lazy var collectionViewLayout: UICollectionViewLayout = {
     // 1
-    let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.25),
+    let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.5),
                                           heightDimension: .absolute(300))
     let item = NSCollectionLayoutItem(layoutSize: itemSize)
     // 2
@@ -41,7 +41,7 @@ class MainVC: UIViewController {
   
   lazy var collectionView: UICollectionView = {
     let view = UICollectionView(frame: CGRect.zero, collectionViewLayout: collectionViewLayout)
-    view.backgroundColor = UIColor.pri
+    view.backgroundColor = UIColor.clear
     view.dataSource = self
     view.delegate = self
     view.register(ImageCell.self, forCellWithReuseIdentifier: ImageCell.cellIdentifier())
@@ -66,7 +66,7 @@ class MainVC: UIViewController {
   
   func setupView() {
     //    self.navigationController?.delegate = self
-    self.view.backgroundColor = UIColor.white
+    self.view.backgroundColor = UIColor.sec1
     self.navigationItem.rightBarButtonItem = rightBarButton
     
     view.addSubview(collectionView)
